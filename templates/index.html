@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="form-container">
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            {% endif %}
+            
+            <form action="{{ url_for('predict') }}" method="post">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="pregnancies" class="form-label">Number of Pregnancies</label>
+                        <input type="number" class="form-control" id="pregnancies" name="pregnancies" required min="0" step="1">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="glucose" class="form-label">Glucose Level (mg/dL)</label>
+                        <input type="number" class="form-control" id="glucose" name="glucose" required min="0">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="bloodpressure" class="form-label">Blood Pressure (mm Hg)</label>
+                        <input type="number" class="form-control" id="bloodpressure" name="bloodpressure" required min="0" max="300">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="skinthickness" class="form-label">Skin Thickness (mm)</label>
+                        <input type="number" class="form-control" id="skinthickness" name="skinthickness" required min="0">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="insulin" class="form-label">Insulin Level (μU/ml)</label>
+                        <input type="number" class="form-control" id="insulin" name="insulin" required min="0">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="bmi" class="form-label">BMI (kg/m²)</label>
+                        <input type="number" class="form-control" id="bmi" name="bmi" required min="0" max="100" step="0.1">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="diabetespedigree" class="form-label">Diabetes Pedigree Function</label>
+                        <input type="number" class="form-control" id="diabetespedigree" name="diabetespedigree" required min="0" step="0.001">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="age" class="form-label">Age (years)</label>
+                        <input type="number" class="form-control" id="age" name="age" required min="0" max="120">
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-lg">Predict Risk</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="mt-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">About the Input Fields:</h5>
+                    <ul class="mb-0">
+                        <li><strong>Pregnancies:</strong> Number of times pregnant</li>
+                        <li><strong>Glucose:</strong> Plasma glucose concentration (2 hours in an oral glucose tolerance test)</li>
+                        <li><strong>Blood Pressure:</strong> Diastolic blood pressure (mm Hg)</li>
+                        <li><strong>Skin Thickness:</strong> Triceps skin fold thickness (mm)</li>
+                        <li><strong>Insulin:</strong> 2-Hour serum insulin (μU/ml)</li>
+                        <li><strong>BMI:</strong> Body mass index (weight in kg/(height in m)²)</li>
+                        <li><strong>Diabetes Pedigree:</strong> Diabetes pedigree function (a function that scores likelihood of diabetes based on family history)</li>
+                        <li><strong>Age:</strong> Age in years</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

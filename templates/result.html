@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="form-container result-card">
+            <h2 class="text-center mb-4">Prediction Results</h2>
+            
+            <div class="text-center mb-4">
+                <h3 class="{% if result.prediction == 1 %}prediction-high{% else %}prediction-low{% endif %}">
+                    {{ result.message }}
+                </h3>
+                <p class="lead">Probability: {{ result.probability }}%</p>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">What does this mean?</h5>
+                    <p class="card-text">
+                        {% if result.prediction == 1 %}
+                        Based on the provided information, our model indicates a higher risk of diabetes. This prediction is based on various factors including glucose levels, BMI, and other health indicators. Please note that this is not a diagnosis, and you should consult with a healthcare professional for proper medical advice.
+                        {% else %}
+                        Based on the provided information, our model indicates a lower risk of diabetes. However, it's important to maintain a healthy lifestyle and regular check-ups with healthcare professionals. This prediction is not a guarantee and should not be used as a medical diagnosis.
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="{{ url_for('home') }}" class="btn btn-primary">Make Another Prediction</a>
+            </div>
+        </div>
+
+        {% if result.prediction == 1 %}
+        <div class="mt-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Recommendations:</h5>
+                    <ul class="mb-0">
+                        <li>Schedule an appointment with your healthcare provider</li>
+                        <li>Monitor your blood glucose levels regularly</li>
+                        <li>Maintain a balanced diet</li>
+                        <li>Exercise regularly</li>
+                        <li>Keep track of your weight and BMI</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 

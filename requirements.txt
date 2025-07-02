@@ -1,0 +1,6 @@
+joblib
+flask
+pydantic
+numpy
+uvicorn
+nest_asyncio 
