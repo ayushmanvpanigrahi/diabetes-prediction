@@ -1,6 +1,9 @@
-joblib
-flask
+Flask==2.3.3
+gunicorn==21.2.0
+joblib==1.3.2
+numpy==1.24.3
+scikit-learn==1.3.0
+Werkzeug==2.3.7
 pydantic
-numpy
 uvicorn
 nest_asyncio 
